@@ -1,3 +1,38 @@
-<h1>MI PAGINA WEB</h1>
+<app-home></app-home>
 
+<h2>{{title}}</h2>
+<h3>{{validarEdad()}}</h3>
+
+<hr>
+<div *ngIf="mostrar">
+
+    <h3>HOLA MUNDO</h3>
+</div>
+<button mat-button color="primary" (click)="mostrarTexto()">MOSTRAR TEXTO</button>
+<hr>
+<h3>LISTA ARRAY</h3>
+
+
+<mat-selection-list #user [multiple]="false">
+    <mat-list-option *ngFor="let usuario of usuarios" [value]="usuario.nombre">
+        Nombre: {{usuario.nombre}}<br>
+    </mat-list-option>
+</mat-selection-list>
+
+<p>
+    Item Seleccionado: {{user.selectedOptions.selected[0]?.value}}
+</p>
+
+<ul>
+    <li *ngFor="let usuario of usuarios">
+        <p [ngClass]="{'ac-usuarios1':mostrar,'ac-usuarios2': !mostrar }">Nombre: {{usuario.nombre}} {{usuario.apellido}}</p>
+        
+    </li>
+</ul>
+<hr>
+<input type="text" [(ngModel)]="nombre" >
+{{nombre}}
+<mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+
+<app-footer></app-footer>
 <router-outlet></router-outlet>
